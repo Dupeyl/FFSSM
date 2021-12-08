@@ -5,11 +5,8 @@ import java.time.LocalDate;
 public class Embauche {
 
     private LocalDate debut;
-
     private LocalDate fin;
-
     private final Moniteur employe;
-
     private final Club employeur;
 
     public Embauche(LocalDate debut, Moniteur employe, Club employeur) {
@@ -23,8 +20,9 @@ public class Embauche {
      * @param dateFin la date à laquelle cette embauche est terminée
      */
     public void terminer(LocalDate dateFin) {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");	    
+        if(!estTerminee()){
+        this.fin=dateFin;
+        }
     }
     
     /**
@@ -78,6 +76,4 @@ public class Embauche {
     public LocalDate getDebut() {
         return debut;
     }
-
-    
 }

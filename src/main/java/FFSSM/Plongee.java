@@ -4,20 +4,18 @@
 package FFSSM;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Plongee {
 
 	public Site lieu;
-
 	public Moniteur chefDePalanquee;
-
 	public LocalDate date;
-
 	public int profondeur;
-
 	public int duree;
+        public ArrayList<Plongeur> lesPlongeurs= new ArrayList<Plongeur>();
 
 	public Plongee(Site lieu, Moniteur chefDePalanquee, LocalDate date, int profondeur, int duree) {
 		this.lieu = lieu;
@@ -28,8 +26,9 @@ public class Plongee {
 	}
 
 	public void ajouteParticipant(Plongeur participant) {
-		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
+            if(!(lesPlongeurs.contains(participant))){
+            lesPlongeurs.add(participant);
+            }
 	}
 
 	public LocalDate getDate() {
@@ -43,8 +42,12 @@ public class Plongee {
 	 * @return vrai si la plongée est conforme
 	 */
 	public boolean estConforme() {
-		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
-	}
-
+            boolean res=true;
+            int i =0;
+            while(res==true){
+                res=lesPlongeurs.get(i).derniereLicence().estValide(getDate());
+                i+=i;
+            }
+        return res;
+        }
 }
